@@ -1,0 +1,97 @@
+name: package
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    name: package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pack one file per extension
+        run: python3 tools/pack.py
+
+      - name: Upload each extension package
+        run: |
+          set -eu
+          for file in dist/*.json; do
+            id="$(basename "$file" .json)"
+            mkdir -p "upload/$id"
+            cp "$file" "upload/$id/$id.json"
+            cp dist/SHA256SUMS "upload/$id/SHA256SUMS"
+          done
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cover-art
+          path: upload/cover-art
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lyrics
+          path: upload/lyrics
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: catalogue-search
+          path: upload/catalogue-search
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: scrobble
+          path: upload/scrobble
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: themes
+          path: upload/themes
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: home-rows
+          path: upload/home-rows
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: url-style
+          path: upload/url-style
+          if-no-files-found: error
+
+  publish:
+    name: publish
+    needs: package
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pack one file per extension
+        run: python3 tools/pack.py
+
+      - name: Publish reviewed packages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu
+          gh release delete extensions --yes --cleanup-tag || true
+          gh release create extensions \
+            --target "${GITHUB_SHA}" \
+            --title "Reviewed extension packages" \
+            --notes "One JSON package per extension. Publishing a release does not install it. The player does not download these." \
+            dist/*.json \
+            dist/SHA256SUMS

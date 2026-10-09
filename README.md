@@ -4,15 +4,19 @@ This repository holds official extension records for Gunmetal (`gunmetal.extensi
 
 An extension is a reviewed record: an id, a title, a version, a plane (`server` or `client`), a slot, a status (`on` or `not-in-build`), a summary, detail lines, and the grants it would ask for.
 
-It is not an app and it is not a downloaded plugin. There is no code to run. No WASM, no scripts, no binaries.
+It is not an app and it is not a plugin you run. There is no WASM, no script for the player, and no binary.
 
-Status `on` means a Gunmetal server already does that job itself. Status `not-in-build` means the record is a target a later package could name. Neither status installs a package.
+## Approval
 
-A merged pull request is a reviewed record. It does not install itself on any server.
+`main` is protected. A change lands only through a pull request, and the `package` check has to pass. That check validates [`catalog.json`](catalog.json) and packs one JSON file per extension. It does not run an extension.
+
+On `main`, those files are also published as release assets under the `extensions` tag. One file, one extension, plus `SHA256SUMS`. A release is the package a later install would take. Publishing it does not install it on a server.
+
+Status `on` means a Gunmetal server already does that job itself. Status `not-in-build` means the record is waiting. Neither status is an install.
+
+The player does not download this repository. Loading or running extension code waits until the sandbox requirements pass.
 
 Membership of this repository is how someone is added or removed as a reviewer.
-
-The closed list is [`catalogue.json`](catalogue.json).
 
 Player: <https://github.com/PremierStudio/gunmetal>
 

@@ -14,7 +14,9 @@
         "The server already fills missing album art from embedded pictures, then Cover Art Archive, and artist photos from the MusicBrainz artist portrait.",
         "That job is part of the server. This record does not name a file to run."
       ],
-      "grants": ["library:write-artwork"]
+      "grants": [
+        "library:write-artwork"
+      ]
     },
     {
       "id": "lyrics",
@@ -28,21 +30,25 @@
         "This build does not look up lyrics.",
         "The record is a target a later package could name, and it would ask only for the lyrics grant."
       ],
-      "grants": ["lyrics:read"]
+      "grants": [
+        "lyrics:read"
+      ]
     },
     {
       "id": "catalogue-search",
-      "title": "Catalogue search",
+      "title": "Catalog search",
       "version": "1.0.0",
       "plane": "server",
       "slot": "search-provider",
       "status": "not-in-build",
-      "summary": "Would search a remote catalogue and return matches as data.",
+      "summary": "Would search a remote catalog and return matches as data.",
       "detail": [
         "This build searches the library it already holds.",
         "A later package could name this id and return remote matches as data."
       ],
-      "grants": ["search:query"]
+      "grants": [
+        "search:query"
+      ]
     },
     {
       "id": "scrobble",
@@ -56,7 +62,9 @@
         "This build does not send plays.",
         "A later package could name this id only after the owner consents to the named service."
       ],
-      "grants": ["scrobble:write"]
+      "grants": [
+        "scrobble:write"
+      ]
     },
     {
       "id": "themes",
@@ -70,7 +78,9 @@
         "Appearance already has the built-in themes.",
         "A later package could name this id and add colours and names as data."
       ],
-      "grants": ["theme:apply"]
+      "grants": [
+        "theme:apply"
+      ]
     },
     {
       "id": "home-rows",
@@ -84,7 +94,9 @@
         "Home already shows this library.",
         "A later package could name this id and describe which albums a row shows."
       ],
-      "grants": ["home-row:read"]
+      "grants": [
+        "home-row:read"
+      ]
     },
     {
       "id": "url-style",
@@ -98,7 +110,9 @@
         "This build already addresses artists, albums, tracks, movies and shows with unique name slugs.",
         "A slug address and an id address open the same page. The address bar shows the slug."
       ],
-      "grants": ["route:read"]
+      "grants": [
+        "route:read"
+      ]
     }
   ]
 }
