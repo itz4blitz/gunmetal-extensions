@@ -1,0 +1,15 @@
+node_modules/
+
+.env
+.env.*
+!.env.example
+
+*.pem
+*.key
+*.p12
+*.pfx
+
+secrets/
+.secrets/
+credentials.json
+credentials.*.json

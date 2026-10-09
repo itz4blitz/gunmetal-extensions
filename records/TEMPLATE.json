@@ -1,0 +1,14 @@
+{
+  "id": "extension-id",
+  "title": "Extension title",
+  "version": "1.0.0",
+  "plane": "server",
+  "slot": "slot-name",
+  "status": "not-in-build",
+  "summary": "One sentence naming the job this record describes.",
+  "detail": [
+    "First detail sentence.",
+    "Second detail sentence, if needed."
+  ],
+  "grants": ["scope:action"]
+}
