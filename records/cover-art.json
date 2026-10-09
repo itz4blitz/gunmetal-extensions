@@ -1,0 +1,16 @@
+{
+  "id": "cover-art",
+  "title": "Metadata and artwork",
+  "version": "1.0.0",
+  "plane": "server",
+  "slot": "metadata-provider",
+  "status": "on",
+  "summary": "Fills missing album art and artist photos from MusicBrainz and Cover Art Archive.",
+  "detail": [
+    "The server already fills missing album art from embedded pictures, then Cover Art Archive, and artist photos from the MusicBrainz artist portrait.",
+    "That job is part of the server. This record does not name a file to run."
+  ],
+  "grants": [
+    "library:write-artwork"
+  ]
+}

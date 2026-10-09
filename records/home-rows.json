@@ -1,0 +1,16 @@
+{
+  "id": "home-rows",
+  "title": "Home rows",
+  "version": "1.0.0",
+  "plane": "client",
+  "slot": "home-row",
+  "status": "not-in-build",
+  "summary": "Would add a home row described as data.",
+  "detail": [
+    "Home already shows this library.",
+    "A later package could name this id and describe which albums a row shows."
+  ],
+  "grants": [
+    "home-row:read"
+  ]
+}

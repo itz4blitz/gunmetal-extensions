@@ -16,59 +16,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Refuse a stale store index
+        run: python3 tools/pack.py --check
+
       - name: Pack one file per extension
         run: python3 tools/pack.py
 
-      - name: Upload each extension package
-        run: |
-          set -eu
-          for file in dist/*.json; do
-            id="$(basename "$file" .json)"
-            mkdir -p "upload/$id"
-            cp "$file" "upload/$id/$id.json"
-            cp dist/SHA256SUMS "upload/$id/SHA256SUMS"
-          done
-
-      - uses: actions/upload-artifact@v4
+      - name: Upload the store index
+        uses: actions/upload-artifact@v4
         with:
-          name: cover-art
-          path: upload/cover-art
-          if-no-files-found: error
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: lyrics
-          path: upload/lyrics
-          if-no-files-found: error
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: catalogue-search
-          path: upload/catalogue-search
-          if-no-files-found: error
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: scrobble
-          path: upload/scrobble
-          if-no-files-found: error
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: themes
-          path: upload/themes
-          if-no-files-found: error
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: home-rows
-          path: upload/home-rows
-          if-no-files-found: error
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: url-style
-          path: upload/url-style
+          name: store
+          path: |
+            catalog.json
+            dist/
           if-no-files-found: error
 
   publish:
@@ -84,7 +44,7 @@ jobs:
       - name: Pack one file per extension
         run: python3 tools/pack.py
 
-      - name: Publish reviewed packages
+      - name: Publish the store
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -92,7 +52,8 @@ jobs:
           gh release delete extensions --yes --cleanup-tag || true
           gh release create extensions \
             --target "${GITHUB_SHA}" \
-            --title "Reviewed extension packages" \
-            --notes "One JSON package per extension. Publishing a release does not install it. The player does not download these." \
+            --title "Store" \
+            --notes "A record in this release is listed in the store. Publishing it does not install it on a server." \
+            catalog.json \
             dist/*.json \
             dist/SHA256SUMS

@@ -1,23 +1,45 @@
-# Extension record template
+# Add a store record
 
-Copy `TEMPLATE.json` when adding a record. Replace every placeholder. The copy must stay valid JSON. JSON has no comments, so this file explains the fields.
+Copy this when you want a new extension listed. A pull request into `main` is the only way in. The merge lists the record in the store. It does not install it, and it does not run anything.
 
-`id` is the stable name reviews and other records use. It does not change. Renaming an id is a new record, not an edit of the old one.
+## 1. Copy the template
 
-`title` is the short name a person reads.
+```bash
+cp records/TEMPLATE.json records/your-id.json
+```
 
-`version` is this record's own version, such as `1.0.0`. It is not the interface version.
+`your-id` is the stable name. Lower case, digits, and hyphens. The filename and the `id` field must be the same. `records/example-lyrics.json` means `"id": "example-lyrics"`. Renaming an id later is a new record, not an edit.
 
-`plane` is `server` or `client`. `server` means the job belongs on the library host. `client` means the job is data the app shows.
+`TEMPLATE.json` is not listed. Leave it here.
 
-`slot` names the kind of job, such as `metadata-provider` or `theme-pack`.
+## 2. Fill the fields
 
-`status` is `on` or `not-in-build`. Use `on` only when a Gunmetal server already does that job itself, without downloading this repository. Otherwise use `not-in-build`. Neither status installs a package.
+`title` is the short name a person reads. 80 characters at most.
 
-`summary` is one sentence saying what the record is for.
+`version` is this record's version, `1.0.0`. Three numbers, no leading zeros, no pre-release text.
 
-`detail` is one or two short sentences. Do not claim that a package is downloaded or executed.
+`plane` is `server` or `client`. Server means the job belongs on the library host. Client means the app draws data. It is never code the app runs.
 
-`grants` lists the permissions the record would ask for. Ask for the minimum. Name each grant.
+`slot` names the kind of job, such as `lyrics-provider` or `theme-pack`. Lower case and hyphens.
 
-The closed list in `catalogue.json` uses the interface id `gunmetal.extensions` version `1`. A merged pull request is a reviewed record. It does not install itself on any server.
+`status` is `on` or `not-in-build`. Use `on` only when a Gunmetal server already does that job itself, without downloading this repository. Otherwise `not-in-build`. Neither status installs a package.
+
+`summary` is one sentence, 200 characters at most, saying what the record is for.
+
+`detail` is one to eight sentences. Each is 240 characters at most. Say what it would do. Do not claim a file is downloaded or executed.
+
+`grants` is one to eight permissions, each `area:action`, such as `lyrics:read`. Ask for the minimum. No wildcard.
+
+Do not add a key the template does not have. The check refuses unknown keys.
+
+## 3. Rebuild the index
+
+```bash
+python3 tools/pack.py
+```
+
+That rewrites `catalog.json` from every file in `records/` except this template, and writes one package file per id under `dist/`. Commit `records/your-id.json` and `catalog.json`.
+
+## 4. Open a pull request
+
+`main` does not take a direct push. The `package` check has to pass. When the pull request merges, the release tagged `extensions` is the store index. The player lists those records. It does not run them.

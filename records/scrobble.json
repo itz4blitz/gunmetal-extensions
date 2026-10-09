@@ -1,0 +1,16 @@
+{
+  "id": "scrobble",
+  "title": "Scrobblers",
+  "version": "1.0.0",
+  "plane": "server",
+  "slot": "scrobbler",
+  "status": "not-in-build",
+  "summary": "Would send plays to a service the owner names.",
+  "detail": [
+    "This build does not send plays.",
+    "A later package could name this id only after the owner consents to the named service."
+  ],
+  "grants": [
+    "scrobble:write"
+  ]
+}
