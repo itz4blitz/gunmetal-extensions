@@ -1,0 +1,16 @@
+{
+  "id": "url-style",
+  "title": "Address style",
+  "version": "1.0.0",
+  "plane": "client",
+  "slot": "route-style",
+  "status": "on",
+  "summary": "Addresses for artists, albums, tracks, movies and shows. This build uses unique name slugs.",
+  "detail": [
+    "This build already addresses artists, albums, tracks, movies and shows with unique name slugs.",
+    "A slug address and an id address open the same page. The address bar shows the slug."
+  ],
+  "grants": [
+    "route:read"
+  ]
+}

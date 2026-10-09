@@ -1,0 +1,16 @@
+{
+  "id": "catalogue-search",
+  "title": "Catalog search",
+  "version": "1.0.0",
+  "plane": "server",
+  "slot": "search-provider",
+  "status": "not-in-build",
+  "summary": "Would search a remote catalog and return matches as data.",
+  "detail": [
+    "This build searches the library it already holds.",
+    "A later package could name this id and return remote matches as data."
+  ],
+  "grants": [
+    "search:query"
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "id": "example-lyrics",
+  "id": "lyrics",
   "title": "Lyrics lookup",
   "version": "1.0.0",
   "plane": "server",
@@ -7,8 +7,10 @@
   "status": "not-in-build",
   "summary": "Would fetch lyrics for tracks whose files have none.",
   "detail": [
-    "This record describes the job. It does not name a file to run.",
-    "A merge lists it in the store. It does not install it."
+    "This build does not look up lyrics.",
+    "The record is a target a later package could name, and it would ask only for the lyrics grant."
   ],
-  "grants": ["lyrics:read"]
+  "grants": [
+    "lyrics:read"
+  ]
 }

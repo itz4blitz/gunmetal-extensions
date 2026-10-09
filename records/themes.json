@@ -1,0 +1,16 @@
+{
+  "id": "themes",
+  "title": "Themes",
+  "version": "1.0.0",
+  "plane": "client",
+  "slot": "theme-pack",
+  "status": "not-in-build",
+  "summary": "Would add theme packs as data on top of the built-in themes.",
+  "detail": [
+    "Appearance already has the built-in themes.",
+    "A later package could name this id and add colours and names as data."
+  ],
+  "grants": [
+    "theme:apply"
+  ]
+}

@@ -3,6 +3,22 @@
   "version": "1",
   "extensions": [
     {
+      "id": "catalogue-search",
+      "title": "Catalog search",
+      "version": "1.0.0",
+      "plane": "server",
+      "slot": "search-provider",
+      "status": "not-in-build",
+      "summary": "Would search a remote catalog and return matches as data.",
+      "detail": [
+        "This build searches the library it already holds.",
+        "A later package could name this id and return remote matches as data."
+      ],
+      "grants": [
+        "search:query"
+      ]
+    },
+    {
       "id": "cover-art",
       "title": "Metadata and artwork",
       "version": "1.0.0",
@@ -19,6 +35,22 @@
       ]
     },
     {
+      "id": "home-rows",
+      "title": "Home rows",
+      "version": "1.0.0",
+      "plane": "client",
+      "slot": "home-row",
+      "status": "not-in-build",
+      "summary": "Would add a home row described as data.",
+      "detail": [
+        "Home already shows this library.",
+        "A later package could name this id and describe which albums a row shows."
+      ],
+      "grants": [
+        "home-row:read"
+      ]
+    },
+    {
       "id": "lyrics",
       "title": "Lyrics lookup",
       "version": "1.0.0",
@@ -32,22 +64,6 @@
       ],
       "grants": [
         "lyrics:read"
-      ]
-    },
-    {
-      "id": "catalogue-search",
-      "title": "Catalog search",
-      "version": "1.0.0",
-      "plane": "server",
-      "slot": "search-provider",
-      "status": "not-in-build",
-      "summary": "Would search a remote catalog and return matches as data.",
-      "detail": [
-        "This build searches the library it already holds.",
-        "A later package could name this id and return remote matches as data."
-      ],
-      "grants": [
-        "search:query"
       ]
     },
     {
@@ -80,22 +96,6 @@
       ],
       "grants": [
         "theme:apply"
-      ]
-    },
-    {
-      "id": "home-rows",
-      "title": "Home rows",
-      "version": "1.0.0",
-      "plane": "client",
-      "slot": "home-row",
-      "status": "not-in-build",
-      "summary": "Would add a home row described as data.",
-      "detail": [
-        "Home already shows this library.",
-        "A later package could name this id and describe which albums a row shows."
-      ],
-      "grants": [
-        "home-row:read"
       ]
     },
     {
