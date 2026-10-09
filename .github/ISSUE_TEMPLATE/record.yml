@@ -1,0 +1,28 @@
+name: Store record
+description: Propose an extension record. A pull request into main is what lists it.
+title: "record: "
+labels: ["record"]
+body:
+  - type: input
+    id: id
+    attributes:
+      label: Id
+      description: Lower case, digits, and hyphens. This becomes records/<id>.json.
+      placeholder: example-lyrics
+    validations:
+      required: true
+  - type: textarea
+    id: job
+    attributes:
+      label: What it does
+      description: One sentence a person can read. A record is data. It does not run.
+    validations:
+      required: true
+  - type: textarea
+    id: grants
+    attributes:
+      label: Grants
+      description: The minimum permissions, each area:action.
+      placeholder: lyrics:read
+    validations:
+      required: true
