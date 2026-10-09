@@ -20,4 +20,6 @@ Membership of this repository is how someone is added or removed as a reviewer.
 
 Player: <https://github.com/PremierStudio/gunmetal>
 
+Review home: <https://github.com/itz4blitz/gunmetal-extensions>
+
 Records are licensed under the GNU AGPL v3, the same license as Gunmetal.
