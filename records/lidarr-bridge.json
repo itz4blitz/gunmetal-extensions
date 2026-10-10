@@ -13,7 +13,7 @@
     "The Lidarr API key would be an encrypted owner-scoped secret; members never see it and it never reaches a log.",
     "Would show wanted, monitored and missing states from Lidarr's own wanted list.",
     "Library refresh after an import stays with the server's path-scoped refresh, not this record.",
-    "The record is a target the R2 plugin host's later package (WP-243, record 29) could name."
+    "The record is a target the R2 plugin host's later package (WP-243, record 32) could name."
   ],
   "grants": [
     "net:host",
