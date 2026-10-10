@@ -1,0 +1,24 @@
+{
+  "id": "lidarr-bridge",
+  "title": "Lidarr bridge",
+  "version": "1.0.0",
+  "plane": "server",
+  "slot": "request-provider",
+  "status": "not-in-build",
+  "summary": "Would request albums and follow artists in your self-hosted Lidarr, and show what Lidarr is still looking for.",
+  "detail": [
+    "This build does not request music and does not reach Lidarr.",
+    "Would match by MusicBrainz ID, which the server reads from tags at scan time.",
+    "Would reach only the exact Lidarr host and port the owner granted, through the server's one egress client.",
+    "The Lidarr API key would be an encrypted owner-scoped secret; members never see it and it never reaches a log.",
+    "Would show wanted, monitored and missing states from Lidarr's own wanted list.",
+    "Library refresh after an import stays with the server's path-scoped refresh, not this record.",
+    "The record is a target the R2 plugin host's later package (WP-243, record 32) could name."
+  ],
+  "grants": [
+    "net:host",
+    "library:read",
+    "secret:own",
+    "schedule:maintenance"
+  ]
+}
