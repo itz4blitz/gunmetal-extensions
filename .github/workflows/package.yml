@@ -12,7 +12,7 @@ permissions:
 jobs:
   package:
     name: package
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, gunmetal-mutants]
     steps:
       - uses: actions/checkout@v4
 
@@ -35,7 +35,7 @@ jobs:
     name: publish
     needs: package
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, gunmetal-mutants]
     permissions:
       contents: write
     steps:
